@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+:root{   
+    
+    --font-size: 16px;
+
+    //Font variables
+    --plain-font: 'Open Sans', sans-serif;
+    --hero-font: 'Kare', sans-serif;
+    --accent-font: 'Josefin Sans', sans-serif;
+
+    // Color variables 
+    --background-color: hsl(0, 0%, 100%);
+    --text-color: hsl(0, 0%, 7%);
+    --primary-color: hsl(308, 100%, 75%);
+    --primary-color-dark: hsl(290, 52%, 47%);
+    --accent-color: hsl(175, 100%, 75%);
+    --accent-color-dark: hsl(175, 48%, 53%);
+    
+
+    --gray-1: hsl(0, 0%, 95%);
+    --gray-2: hsl(0, 0%, 90%);
+    --gray-3: hsl(0, 0%, 80%);
+    --gray-4: hsl(0, 0%, 60%);
+    --gray-5: hsl(0, 0%, 40%);
+    --gray-6: hsl(0, 0%, 30%);
+    --gray-7: hsl(0, 0%, 20%);
+
+
+    --button-color: var(--background-color);
+    --border-color: var(--text-color);
+    --link-color: var(--accent-color);
+
+    //Timing variables
+    --transition-normal: 350ms;
+    --transition-fast: 200ms;
+    --transition-slow: 500ms;
+
+
+    //Spacing Variables
+    --heading-spacing: 0.5rem;
+    --border-radius: 300px;     //just something large so it's nice and smooth
+    --padding-v: 1em;
+    --padding-h: 1.5em;
+
+    //Box shadows, pain :) 
+    --box-shadow-size: 2px;
+    --box-shadow-blur: 7px;
+    --box-shadow-opacity: 0.25;
+    --default-box-shadow: 
+        calc(var(--box-shadow-size)/2)
+        var(--box-shadow-size) 
+        var(--box-shadow-blur) 
+        rgba(0, 0, 0, var(--box-shadow-opacity));
+
+    --box-shadow-size-hover: 1px;
+    --box-shadow-blur-hover: 7px;
+    --default-box-shadow-hover:
+        calc(var(--box-shadow-size-hover)/2)
+        var(--box-shadow-size-hover) 
+        var(--box-shadow-blur-hover) 
+        rgba(0, 0, 0, var(--box-shadow-opacity));
+
+
+    // Media query variables
+    // CSS VARIABLES DONT WORK IN MEDIA QUERYS. 
+    // YOU COULD USE SASS VARIABLES.
+
+    font-size: var(--font-size);
+    font-family: var(--plain-font);
+    line-height: 1.5em;
+    letter-spacing: 0.05em;
+    
+    
+    scroll-behavior: smooth;    
+}
+
+:root,
+body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;  // so that footer sticks on bottom!
+    display: flex;
+    flex-direction: column;
+
+    background: var(--background-color);
+    color: var(--text-color);
+
+    text-size-adjust: 100%;
+}
+  
+main,
+article,
+section {
+  display: block;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  transition: all var(--transition-normal);
+
+
+  // `:focus` is linked to `:hover` for basic accessibility
+  &:hover,
+  &:focus {
+    color: var(--accent-color);
+    transition: all var(--transition-fast) ease;
+  }
+
+  strong {
+    color: inherit;
+  }
+}
+
+img {
+  border-radius: 5px;
+  display: block;
+  height: auto; // prevent max-width from squishing images with defined height
+  margin: 0 0 1rem;
+  max-width: 100%;
+}
+
+table {
+  border: 1px solid var(--border-color);
+  border-collapse: collapse;
+  font-size: 85%;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid var(--border-color);
+  padding: 0.25rem 0.5rem;
+}
+
+th {
+  text-align: left;
+}
+
+tbody tr:nth-child(odd) td,
+tbody tr:nth-child(odd) th {
+  background-color: var(--gray-1);
+}
+
+button{
+    border-style: none;
+    border-radius: var(--border-radius);
+    padding: var(--padding-v) var(--padding-h);
+    color: var(--text-color);
+    font-family: var(--accent-font);
+    font-size: var(--font-size);
+    background: var(--button-color);
+
+    box-shadow: var(--default-box-shadow);
+
+    transition: all var(--transition-fast);
+
+
+    &:hover,
+    &:focus,
+    &:target{
+        background: var(--accent-color);
+
+
+        transition: all var(--transition-normal) ease;
+    }
+}
