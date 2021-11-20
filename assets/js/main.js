@@ -43,11 +43,11 @@ function scanner() {
 
                 // send scanned item to backen
                 console.log("Sending barcode data to server");
-                fetch(`http://${endpoint}/scan/001/${code}`, { mode: 'opaque'});
+                fetch(`http://${endpoint}/scan/001/${code}`, { mode: 'no-cors'});
 
                 // get product photo
                 console.log("Fetching product data from server");
-                fetch(`http://${endpoint}/image/product/${code}`, { mode: 'opaque'})
+                fetch(`http://${endpoint}/image/product/${code}`, { mode: 'no-cors'})
                   .then(res => res.blob())
                   .then(
                     blob => {
@@ -59,7 +59,7 @@ function scanner() {
                 )
 
                 // get product data
-                fetch(`http://${endpoint}/product/${code}`, { mode: 'opaque'})
+                fetch(`http://${endpoint}/product/${code}`, { mode: 'no-cors'})
                 .then(
                     response => response.json()
                 ).then(
