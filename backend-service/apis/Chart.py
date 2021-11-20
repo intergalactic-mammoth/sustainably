@@ -38,6 +38,41 @@ class Chart(Resource):
                 "staticPlot": True,
             }
         )
+    
+    def _item_sustainability(self, user_id):
+        """
+        Create a pie plot with all items flagged as good, okay or bad
+        """
+        dummy_data = pd.DataFrame({
+            "names": ["Good", "Okay", "Bad"],
+            "values": [4, 7, 10]
+        })
+
+        item_sustainability_pie_chart: go.Figure = px.pie(
+            data_frame=dummy_data,
+            names="names",
+            values="values",
+            template="plotly_dark",
+            color="values",
+            color_discrete_map={
+                "Good": "green",
+                "Okay": "blue",
+                "Bad": "red",
+            }
+        )
+
+        item_sustainability_pie_chart.update_traces(
+            textinfo="label+value",
+            hoverinfo="",
+            marker_line_width=3,
+            textfont_size=30,
+        )
+
+        item_sustainability_pie_chart.update_layout(
+            show_legend=False,
+        )
+
+        return item_sustainability_pie_chart
 
     def get(self, user_id, chart_type=None):
         x = np.linspace(0, 2, 100)
@@ -56,3 +91,4 @@ class Chart(Resource):
 if __name__ == "__main__":
     chart_resource = Chart()
     chart_resource._carbon_footprint_over_time(1)
+    chart_resource._item_sustainability(1).show()
