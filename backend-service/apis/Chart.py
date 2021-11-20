@@ -48,23 +48,24 @@ class Chart(Resource):
             "values": [4, 7, 10]
         })
 
-        item_sustainability_pie_chart: go.Figure = px.pie(
-            data_frame=dummy_data,
-            names="names",
-            values="values",
-            template="plotly_dark",
-            color="values",
-            color_discrete_map={
-                "Good": "green",
-                "Okay": "blue",
-                "Bad": "red",
-            }
+        item_sustainability_pie_chart = go.Figure(
+            data=go.Pie(
+                labels=dummy_data["names"],
+                values=dummy_data["values"],
+                showlegend=False,
+            ),
+            layout=go.Layout(
+                template="plotly_dark",
+            )
         )
 
         item_sustainability_pie_chart.update_traces(
             textinfo="label+value",
-            hoverinfo="",
-            marker_line_width=3,
+            hoverinfo="percent",
+            marker=dict(
+                colors=["green", "blue", "red"],
+                line_width=3,
+            ),
             textfont_size=30,
         )
 
