@@ -46,7 +46,7 @@
 }
 
 .small-margin-bottom{
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .mid-margin-bottom{
@@ -82,7 +82,7 @@
 }
 
 .bold{
-    font-weight: 700;
+    font-weight: bold;
 }
 
 .lowercase{
@@ -113,6 +113,10 @@
     color: var(--primary-color);
 }
 
+.primary-color-light{
+    color: var(--primary-color-light);
+}
+
 .primary-color-bg{
     background-color: var(--primary-color);
 }
@@ -126,3 +130,4 @@
 }
 @import "parts/sidebar";
 @import "parts/dashboard";
+@import "parts/scanner";

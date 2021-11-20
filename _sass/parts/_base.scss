@@ -14,11 +14,11 @@
     // Color variables 
     --background-color: hsl(0, 0%, 10%);
     --text-color: hsl(0, 0%, 95%);
-    --primary-color: hsl(175, 100%, 75%); 
-    --primary-color-dark: hsl(175, 48%, 53%);
-    --accent-color: hsl(308, 100%, 75%);
-    --accent-color-dark: hsl(290, 52%, 47%); 
-    
+    --primary-color-light: hsl(125, 65%, 90%);
+    --primary-color: hsl(155, 55%, 55%);
+    --primary-color-dark: hsl(175, 55%, 40%);
+    --accent-color: hsl(175, 55%, 40%);
+    --accent-color-dark: hsl(205, 55%, 30%);
 
     --gray-1: hsl(0, 0%, 95%);
     --gray-2: hsl(0, 0%, 90%);
@@ -93,8 +93,13 @@ body{
 
     text-size-adjust: 100%;
 }
-  
-main,
+
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 article,
 section {
   display: block;
