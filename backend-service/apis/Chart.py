@@ -109,6 +109,8 @@ class Chart(Resource):
 
 
     def get(self, user_id, chart_type=None):
+        user_id = int(user_id)
+
         if chart_type is None:
             time_series_chart_div = self._convert_to_div(
                 self._carbon_footprint_over_time(
