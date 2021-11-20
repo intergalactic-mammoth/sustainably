@@ -2,13 +2,16 @@
 Providing charts based on user statistics.
 """
 
-from flask_restful import Resource
-import pandas as pd
-
-import plotly.express as px
-from plotly import offline
-import plotly.graph_objects as go
 import numpy as np
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from flask import Response
+from flask_restful import Resource
+from plotly import offline
+
+from apis.utils.ChartUtils import co2_footprint, product_sustainability_breakdown
+
 
 class Chart(Resource):
 
@@ -16,19 +19,30 @@ class Chart(Resource):
         """
         Create a timeseries line plot of the carbon footprint per day
         """
+        DAYS_BACK = 5
+        co2_data = co2_footprint(user_id=user_id, tail_days=DAYS_BACK)
+        g = [x.values for x in co2_data]
+        g = np.array(g).flatten()
         # Need function to create data, this is just some dummy data
-        df = px.data.stocks()
-        carbon_footprint_over_time_line_plot: go.Figure = px.line(
-            data_frame=df,
-            x="date",
-            y="GOOG",
-            template="plotly_dark",
+        # carbon_footprint_over_time_line_plot: go.Figure = px.scatter(
+        #     x=list(range(DAYS_BACK)),
+        #     y=g,
+        #     template="plotly_dark",
+        # )
+        carbon_footprint_over_time_line_plot = go.Figure(
+            go.Scatter(
+                x=np.arange(5) - 4 ,
+                y=g,
+                line_shape="spline",
+            )
         )
 
         carbon_footprint_over_time_line_plot.update_layout(
-            xaxis_title="",
+            xaxis_title="Days Back",
             yaxis_title="Carbon Footprint",
             modebar=None,
+            template="plotly_dark",
+            xaxis_dtick=1,
         )
 
         return carbon_footprint_over_time_line_plot
@@ -37,15 +51,16 @@ class Chart(Resource):
         """
         Create a pie plot with all items flagged as good, okay or bad
         """
-        dummy_data = pd.DataFrame({
-            "names": ["Good", "Okay", "Bad"],
-            "values": [4, 7, 10]
-        })
+        DAYS_BACK = 5
+        data = product_sustainability_breakdown(
+            user_id=user_id,
+            tail_days=DAYS_BACK,
+        )
 
         item_sustainability_pie_chart = go.Figure(
             data=go.Pie(
-                labels=dummy_data["names"],
-                values=dummy_data["values"],
+                labels=data.index,
+                values=data,
                 showlegend=False,
             ),
             layout=go.Layout(
@@ -60,7 +75,7 @@ class Chart(Resource):
                 colors=["green", "blue", "red"],
                 line_width=3,
             ),
-            textfont_size=30,
+            textfont_size=10,
         )
 
         return item_sustainability_pie_chart
@@ -71,10 +86,8 @@ class Chart(Resource):
         Takes a plotly figure object and turns it into a str with an html div
         object that can then be embedded into a webpage.
         """
-        figure_div = offline.plot(
-            figure_or_data=figure,
-            include_plotlyjs=False,
-            output_type="div",
+        figure_div = figure.to_html(
+            include_plotlyjs=True,
             config={
                 "displayModeBar": False,
             }
@@ -111,7 +124,7 @@ class Chart(Resource):
                 )
             )
 
-            return time_series_chart_div
+            return Response(time_series_chart_div, mimetype="text/html")
 
         elif chart_type == "item_sustainability":
             pie_chart_div = self._convert_to_div(
@@ -120,13 +133,16 @@ class Chart(Resource):
                 )
             )
 
-            return pie_chart_div
+            return Response(pie_chart_div, mimetype="text/html")
         
         else:
             raise ValueError("Requested Chart is not available")
 
 
-if __name__ == "__main__":
+def test():
     chart_resource = Chart()
     chart_resource._carbon_footprint_over_time(1).show(config={"displayModeBar": False})
     chart_resource._item_sustainability(1).show(config={"displayModeBar": False})
+
+if __name__ == "__main__":
+    test()

@@ -33,7 +33,7 @@ api.add_resource(
 
 api.add_resource(
     Chart,
-    "/chart/<user_id>/<chart_type>",
+    "/chart/<user_id>/<chart_type>.html",
     "/chart/<user_id>",
 )
 
