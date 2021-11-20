@@ -32,7 +32,8 @@ api.add_resource(
 
 api.add_resource(
     Chart,
-    "/chart/<user_id>/<chart_type>"
+    "/chart/<user_id>/<chart_type>",
+    "/chart/<user_id>",
 )
 
 if __name__ == '__main__':
