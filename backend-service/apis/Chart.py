@@ -80,7 +80,10 @@ class Chart(Resource):
         figure_div = offline.plot(
             figure_or_data=figure,
             include_plotlyjs=False,
-            output_type="div"
+            output_type="div",
+            config={
+                "displayModeBar": False,
+            }
         )
 
         return figure_div
@@ -131,5 +134,5 @@ class Chart(Resource):
 
 if __name__ == "__main__":
     chart_resource = Chart()
-    chart_resource._carbon_footprint_over_time(1)
-    chart_resource._item_sustainability(1).show()
+    chart_resource._carbon_footprint_over_time(1).show(config={"displayModeBar": False})
+    chart_resource._item_sustainability(1).show(config={"displayModeBar": False})
