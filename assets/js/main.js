@@ -1,3 +1,9 @@
+let server_host = "34.159.28.136"
+let server_port = "8080"
+// let server_host = "192.168.178.106"
+// let server_port = "5000"
+
+let endpoint = server_host + ":" + server_port
 
 let jsonToText = {
     "Name": "Name",
@@ -36,11 +42,11 @@ function scanner() {
 
                 // send scanned item to backen
                 console.log("Sending barcode data to server");
-                fetch(`http://192.168.178.78:8080/scan/001/${code}`);
+                fetch(`http://${endpoint}/scan/001/${code}`);
 
                 // get product photo
                 console.log("Fetching product data from server");
-                fetch(`http://192.168.178.78:8080/image/product/${code}`)
+                fetch(`http://${endpoint}/image/product/${code}`)
                   .then(res => res.blob())
                   .then(
                     blob => {
@@ -48,7 +54,6 @@ function scanner() {
                       let imgElement = document.getElementById("product-img");
                       imgElement.setAttribute("style", "");
                       imgElement.setAttribute("src", imgUrl)
-                      dataDiv.appendChild(img);
                     }
                 )
 
