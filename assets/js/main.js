@@ -4,6 +4,7 @@ let server_port = "8080"
 // let server_port = "5000"
 
 let endpoint = "sustainably-scanner.ml"
+let api_key = "AbHgdhJTM3yzLKPuFBhvcYtBK8IZEYmAOwJhuAJKxbeKcIKtK3UIXzBeYhIZUYPNknT0alBF9A7JXatgT2EeGy5W012DaJxN5DdbsF1kz/VIV+SscQabm4FaDggvGHPfZjcaSf0wHSUUFCSbMApxXZwqwtnn4Y9wtdatpXYS326i8wE4YOPMO7/pLQ3y3bPn0o0BcWZ8tdN11ADYEzzZODWX9YkCBUDhtc/BIArSQALTCFpiAjFj+iUGS9CnIg4iQWP+64JQ95f/ykfXZ333CpM3pMtgeudjzq69RZcDWTcqo/L1Gse1gy9VpE6Zf2PUmrdcjID6b6rzzJifOwlC1KA1RmjGccjfGQ4Xh5/kXvpSM0eEtuSoh7I7/JHPaSCUezpg7mQfHrUConL1y1V6BI0JAhTXv8quidOfa5YXFcaAkuIDkW38wcZ/6sNNNP8im0+aJhL6gUMhq1a1cYnVrlXvTiPmsm8QY/pRg01f2izYqbiBhH0tnNvTcIoWrBUo7MSvPM3OXLfGPoAv4hJOVFcrEded9tNz8gZLXT6Eai/hk/jwM8G5mlcxgH5/8ZpZW7BMot4bx4GhneXeYqhe3bolgQUEaQ8e1I77RyqhxZl/gWF+e01Cu2lhnuEEYGTg9aNi7HDbLsYJkoMotoZXvWgNc7uhs33717oKeL4iBI6RD2nzWU5dPq/OjAKeMl6Nk2xDKI9oV9G5KS6zMtMPKWdKxDr+I9ieA0N2q4mpOOIRvzdQjKLmJmKD0PRToQMGSjwKJ2HN33ZH2bfrbOTshdW0sWIDZGcnJBznzYUcPBBBiw59TkMVhvOrE3fqJWwbPIo="
 
 let jsonToText = {
     "Name": "Name",
@@ -21,7 +22,7 @@ function injectData() {
 }
 
 function scanner() {
-    ScanditSDK.configure("AfSQ2mdTRgepAolsjwu0JM8dn5ONHT255B/e169bGMSgeJjCe2N4GelXOzgfVZJNwRPMya9ogf4AQS/CTVtZiXl3+WpPVibyLUFYmZNKmo5cJGTUX1v0naNNKCoEH7xvgk1BRD4uC4ToCFhORCTEr4UVxJpGMLN0f51u/SANQaIRoM0G67PWYNSAAKjBLqN+9SerGPOziRuepui7BltH7egFVO9phP/gTV9Cw8b4tghWy2cbFoJRtlI/i1cd+QjHM5n/swNambSN8w9UKwPOvxkpwSNBFZ1r9z3mqRFkZ/jkYbTc5FONyd73oRjzF1jvvGip5D1HbB1pdD58roZ8SgPVbxSCSCnoOxVtn76Rui2oZ8WGNgfFacqjcZvBtxmtsZQb9+cnBtNMvljrxp5E+5qFxFQ61811fudRKkTqg8brbKsmZGatKyNn+Ro0s0QxgohzYvMhfYCOxl8fgcYJ1uCug0g7wqX4zhz1WcAbs2y9DIrF/mIk40TQBWxyO/Wl/ljGjgJ3htuQNicfFDm1XzVKLJabIy519Jo60+fMfU7wApNvs7X5uHU01bCuyi8Mg1kT1obAuSScHUYn9obTsnANCP6jrBCIKoDoSB+p2DefqlRKEc9PD+JkajGAaghxJNrrvZlXrN50y9vuOsJEm+iCv5Ma9xiZPsmMmIREnjYBJ+WulR/dGy5eI2TvOhDuPyhnd4gdW987RdCnoysPs2OcHfoApY2eiETCC4iUn5Lib7/+NBpWLs4rG0fVs8inWnUooQTb1yJx+EXBhkefuulH4UMiirMzZ1rU5bOeDGAMkbI+GFw3q4SXOGdQ5ZFkpQutyBBg", {
+    ScanditSDK.configure(api_key, {
         engineLocation: "https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/",
         preloadEngineLibrary: boolean = false,
         preloadCameras: boolean = false
