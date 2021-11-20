@@ -34,6 +34,7 @@ class Chart(Resource):
                 x=np.arange(5) - 4 ,
                 y=g,
                 line_shape="spline",
+                line_color="rgb(213, 246, 216)",
             )
         )
 
@@ -43,6 +44,11 @@ class Chart(Resource):
             modebar=None,
             template="plotly_dark",
             xaxis_dtick=1,
+            paper_bgcolor="rgb(51, 51, 51)",
+            plot_bgcolor="rgb(51, 51, 51)",
+            xaxis_gridcolor="rgb(153, 153, 153)",
+            yaxis_gridcolor="rgb(153, 153, 153)",
+            font_color="rgb(153, 153, 153)",
         )
 
         return carbon_footprint_over_time_line_plot
@@ -65,6 +71,8 @@ class Chart(Resource):
             ),
             layout=go.Layout(
                 template="plotly_dark",
+                plot_bgcolor="rgb(51, 51, 51)",
+                paper_bgcolor="rgb(51, 51, 51)",
             )
         )
 
@@ -72,7 +80,11 @@ class Chart(Resource):
             textinfo="label+value",
             hoverinfo="percent",
             marker=dict(
-                colors=["green", "blue", "red"],
+                colors=[
+                    "rgb(34, 84, 119)",
+                    "rgb(46, 158, 149)",
+                    "rgb(213, 246, 216)"
+                ],
                 line_width=3,
             ),
             textfont_size=10,
