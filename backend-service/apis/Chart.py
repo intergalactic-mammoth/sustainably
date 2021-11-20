@@ -13,8 +13,6 @@ import numpy as np
 class Chart(Resource):
 
     def _carbon_footprint_over_time(self, user_id):
-        # user_data = pd.read_csv(f"data/user/{user_id:03d}.csv")
-
         # Need function to create data, this is just some dummy data
         df = px.data.stocks()
         carbon_footprint_over_time_line_plot: go.Figure = px.line(
@@ -29,13 +27,6 @@ class Chart(Resource):
             yaxis_title="Carbon Footprint",
             modebar=None,
         )
-
-        # carbon_footprint_over_time_line_plot.show(
-        #     config={
-        #         "displayModeBar": False,
-        #         "staticPlot": True,
-        #     }
-        # )
 
         return carbon_footprint_over_time_line_plot
     
