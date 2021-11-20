@@ -5,3 +5,4 @@ Id,Name,Brand_Id,Country_Origin,Water_Usage,Water_Score,Packaging_Type,Packaging
 4311501478578,Schoko & Keks,3,Germany,5,0.2,Paper,0.75,[],[],"[""Palm Oil""]",0.65,"[""Rainforest Alliance""]",0.2,1,0.465,14
 4311596649969,Vegan Burger Patties,4,Germany,25,0.8,"PET, PEEFC, Paper",0.45,"[""Plant-based""]","[""Human Rights""]",[],0.85,"[""Vegan Alliance""]",0.2,1,0.605,15
 4311501667477,Orangensaft,2,Germany,40,0.9,PET,0.8,"[""Freshly Squeezed""]","[""Rainforest Damage""]",[],0.85,[],0,1,0.765,27
+4311501605905,IKEA Sadoka,5,Sweden,40,0.9,PET,0.8,"[""Freshly Squeezed""]","[""Rainforest Damage""]",[],0.85,[],0,1,0.765,27
