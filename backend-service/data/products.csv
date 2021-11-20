@@ -1,7 +1,7 @@
-Id,Name,Brand_Id,Country_Origin,Water_Usage,Packaging_Type,Notes,Critical Ingredients,Certifications
-90162565,RedBull Energy Drink,1,Bangladesh,20,Aluminium,Redbull is killing the amazon forest - forestisburning.com/redbull,None,None
-4311501421840,Flips,2,Germany,30,PEEFC,None,None,None
-4311501662328,Kessel Chips,2,Cyprus,45,PEEFC,None,None,None
-4311501478578,Schoko & Keks,3,Germany,5,Paper,None,Palm Oil,Rainforest Alliance
-4311596649969,Vegan Burger Patties,4,Germany,25,"PET, PEEFC, Paper",None,None,Vegan Alliance
-4311501667477,Orangensaft,2,Germany,40,PET,Killing swarzwalt,None,None
+Id,Name,Brand_Id,Country_Origin,Water_Usage,Water_Score,Packaging_Type,Packaging_Score,Positive Alerts,Negative Alerts,Critical Ingredients,Ingredients_Score,Certifications,Certification_Score,Recommend_Id,Sustainably_Score,CO2_Eqiv
+90162565,RedBull Energy Drink,1,Bangladesh,20,0.4,Aluminium,0.8,[],"[""Rainforest Damage"", ""Coal Usage""]",[],0.8,[],0,1,0.56,10
+4311501421840,Flips,2,Germany,30,0.75,PEEFC,0.25,[],[],[],0.9,[],0,1,0.49,20
+4311501662328,Kessel Chips,2,Cyprus,45,0.25,PEEFC,0.25,[],[],[],0.9,[],0,1,0.29,15
+4311501478578,Schoko & Keks,3,Germany,5,0.2,Paper,0.75,[],[],"[""Palm Oil""]",0.65,"[""Rainforest Alliance""]",0.2,1,0.465,14
+4311596649969,Vegan Burger Patties,4,Germany,25,0.8,"PET, PEEFC, Paper",0.45,"[""Plant-based""]","[""Human Rights""]",[],0.85,"[""Vegan Alliance""]",0.2,1,0.605,15
+4311501667477,Orangensaft,2,Germany,40,0.9,PET,0.8,"[""Freshly Squeezed""]","[""Rainforest Damage""]",[],0.85,[],0,1,0.765,27

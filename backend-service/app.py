@@ -3,6 +3,7 @@ from apis.ProductToImage import ProductToImage
 from apis.Scan import Scan
 from apis.Statistic import Statistic
 from apis.Chart import Chart
+from apis.Ping import Ping
 
 from flask import Flask
 from flask_restful import Api
@@ -32,7 +33,13 @@ api.add_resource(
 
 api.add_resource(
     Chart,
-    "/chart/<user_id>/<chart_type>"
+    "/chart/<user_id>/<chart_type>.html",
+    "/chart/<user_id>",
+)
+
+api.add_resource(
+    Ping,
+    "/ping"
 )
 
 if __name__ == '__main__':
