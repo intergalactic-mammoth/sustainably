@@ -4,30 +4,34 @@ layout: default
 
 <div class="centered-flex-container flex-column">
     <div id="scandit-barcode-picker" style="width: 20rem; height: 20rem; border-radius: 15px;"></div>
-    <div id="product-data">
+    <div id="product-data" style="display: none;">
         <div class="centered-flex-container">
-            <img id="product-img" src="https://www.icelandtours.is/wp-content/uploads/2019/10/Dimmuborgir-rock-formation-Copy.jpg" alt="product-image">
+            <img id="product-img" src="https://www.icelandtours.is/wp-content/uploads/2019/10/Dimmuborgir-rock-formation-Copy.jpg" alt="product-image" style="display: none;">
         </div>
 
         <div class="product-header">
             <div>
                 <h1 id="product-title" class="primary-color">Kessel Chips</h1>
-                <h2 id="product-brand" class="primary-color">Gut & Gunstig</h2>        
+                <h2 id="product-brand" class="primary-color">Gut & Gunstig</h2>
             </div>
             <p id="product-score" class="hero-size bold primary-color-light">3.4/10</p>
         </div>
+
         <h2 class="primary-color-light">Information</h2>
         <div class="product-entry">
             <p>Origin County</p>
-            <p class="primary-color-light">Cyprus</p>
+            <p id="product-country" class="primary-color-light">Cyprus</p>
         </div>
         <div class="product-entry">
             <p>CO2 Footprint</p>
-            <p class="primary-color-light">0.12kg</p>
+            <p id="product-co2" class="primary-color-light">0.12kg</p>
         </div>
         <div class="product-entry">
             <p>Recyclability</p>
-            <p class="primary-color-light">5.7</p>
+            <p id="product-recyclability" class="primary-color-light">5.7</p>
         </div>
+
+        <div class="mid-margin-bottom"></div>
+        
     </div>
 </div>
