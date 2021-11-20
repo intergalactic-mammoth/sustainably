@@ -5,4 +5,4 @@ from flask_restful import Resource
 class Ping(Resource):
 
     def get(self):
-        co2_footprint("001", 3)
+        product_sustainability_breakdown("001", 10)
