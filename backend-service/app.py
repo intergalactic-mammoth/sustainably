@@ -1,6 +1,7 @@
 from apis.Product import Product
 from apis.Scan import Scan
 from apis.Statistic import Statistic
+from apis.Chart import Chart
 
 from flask import Flask
 from flask_restful import Api
@@ -20,6 +21,11 @@ api.add_resource(
 api.add_resource(
     Statistic,
     "/statistic/<user_id>",
+)
+
+api.add_resource(
+    Chart,
+    "/chart/<user_id>/<chart_type>"
 )
 
 if __name__ == '__main__':
