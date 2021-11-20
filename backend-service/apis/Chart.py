@@ -21,7 +21,8 @@ class Chart(Resource):
         """
         DAYS_BACK = 5
         co2_data = co2_footprint(user_id=user_id, tail_days=DAYS_BACK)
-        g = [x.values for x in co2_data]
+        # g = [x.values for x in co2_data]
+        g = [x for x in co2_data]
         g = np.array(g).flatten()
         # Need function to create data, this is just some dummy data
         # carbon_footprint_over_time_line_plot: go.Figure = px.scatter(
