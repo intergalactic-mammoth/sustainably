@@ -1,6 +1,9 @@
 .navbar {
 	position: fixed;
 	background-color: var(--gray-7);
+	box-shadow: var(--default-box-shadow);
+	z-index: 100;
+
 	transition: width var(--transition-fast) ease;
 	&:hover {
 		.logo {
@@ -62,15 +65,12 @@
 }
 
 .logo {
-	font-weight: bold;
-	text-transform: uppercase;
 	margin-bottom: 1rem;
 	text-align: center;
 	color: var(--primary-color-dark);
 	background: var(--gray-6);
 	font-size: 1.5rem;
-	text-transform: uppercase;
-	letter-spacing: 0.3ch;
+	letter-spacing: 0.2ch;
 	width: 100%;
 	svg {
 		transform: rotate(0deg);

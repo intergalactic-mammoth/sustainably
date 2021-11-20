@@ -1,9 +1,126 @@
 @import "parts/base";
 
-main{
+/* Positioning, layouts, centering etc */
+
+.content-wrapper{
+    align-content: center;
+
+    margin-top: 2rem;
 	margin-left: 6rem;
-	padding: 1rem;
-	text-align: justify;
+	margin-right: 1rem;
+
+    margin-bottom: 1.5rem;
 }
 
-@import "parts/navbar"
+// Use this class whenever you want to have a single something inside centered
+.centered-flex-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.centered-grid-container{
+    display:grid;
+    align-items: center;
+    justify-content: center;
+
+    gap:1.25rem;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.small-margin{
+    margin:1rem;
+}
+
+.small-margin-bottom{
+    margin-bottom: 1rem;
+}
+
+.mid-margin-bottom{
+    margin-bottom: 3rem;
+}
+
+.pos-relative{
+    position: relative;
+}
+
+.pos-absolute{
+    position:absolute;
+}
+
+
+
+/* Font sizes, families and transforms */
+.hero-font{
+	font-family: var(--hero-font);
+}
+.hero-size{
+	font-size: 5rem;
+
+    @media screen and (max-width: 600px) {
+        font-size: 3.5rem;
+    }
+}
+
+.accent-font{
+    font-family: var(--accent-font);
+    line-height: 1.35em;
+    letter-spacing: 0.1em;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.lowercase{
+    text-transform: lowercase;
+}
+
+.uppercase{
+    text-transform: uppercase;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+
+/* Colors */
+
+.bg-color{
+    color: var(--background-color);
+}
+
+.bg-color-bg{
+    background-color: var(--background-color);
+}
+
+.primary-color{
+    color: var(--primary-color);
+}
+
+.primary-color-bg{
+    background-color: var(--primary-color);
+}
+
+.accent-color{
+    color: var(--accent-color);
+}
+
+.accent-color-bg{
+    background-color: var(--accent-color);
+}
+@import "parts/sidebar";
+@import "parts/dashboard";

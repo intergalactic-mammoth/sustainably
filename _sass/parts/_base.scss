@@ -12,12 +12,12 @@
     --accent-font: 'Josefin Sans', sans-serif;
 
     // Color variables 
-    --background-color: hsl(0, 0%, 100%);
-    --text-color: hsl(0, 0%, 7%);
-    --primary-color: hsl(308, 100%, 75%);
-    --primary-color-dark: hsl(290, 52%, 47%);
-    --accent-color: hsl(175, 100%, 75%);
-    --accent-color-dark: hsl(175, 48%, 53%);
+    --background-color: hsl(0, 0%, 10%);
+    --text-color: hsl(0, 0%, 95%);
+    --primary-color: hsl(175, 100%, 75%); 
+    --primary-color-dark: hsl(175, 48%, 53%);
+    --accent-color: hsl(308, 100%, 75%);
+    --accent-color-dark: hsl(290, 52%, 47%); 
     
 
     --gray-1: hsl(0, 0%, 95%);
@@ -46,9 +46,9 @@
     --padding-h: 1.5em;
 
     //Box shadows, pain :) 
-    --box-shadow-size: 2px;
+    --box-shadow-size: 3px;
     --box-shadow-blur: 7px;
-    --box-shadow-opacity: 0.25;
+    --box-shadow-opacity: 0.35;
     --default-box-shadow: 
         calc(var(--box-shadow-size)/2)
         var(--box-shadow-size) 

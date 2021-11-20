@@ -1,0 +1,16 @@
+.dashboard {
+    margin: 2rem;
+
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-auto-rows: 240px;
+}
+
+.card{
+	background: var(--gray-5);
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+
+    transition: all var(--transition-normal);
+    
+}
