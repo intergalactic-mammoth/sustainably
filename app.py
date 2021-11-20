@@ -18,6 +18,7 @@ class Product(Resource):
                     if record['Id'] == product_id:
                         return record
         else:
+            print("here")
             with open(file_path, 'r') as file:
                 # reader = csv.reader(file)
                 reader = csv.DictReader(file)
