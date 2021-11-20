@@ -33,24 +33,26 @@ function scanner() {
                 console.log(scanResult.barcodes[0].data);
 
                 code = scanResult.barcodes[0].data;
+
+                // send scanned item to backen
                 console.log("Sending barcode data to server");
                 fetch(`http://192.168.178.78:8080/scan/001/${code}`);
 
+                // get product photo
                 console.log("Fetching product data from server");
-                // fetch(`http://192.168.178.78:8080//image/product/${code}`).then(
-                //     response => response.json()
-                // ).then(
-                //     data => {
-                //         console.log("Product image:");
-                //         console.log(data);
-                //         dataDiv = document.getElementById("product-data");
-                //         let img = document.createElement("product-data");
-                //         img.setAttribute("class", "product-img");
-                //         img.setAttribute("src", data)
-                //         dataDiv.appendChild(img);
-                //     }
-                // )
-                // .then()
+                fetch(`http://192.168.178.78:8080/image/product/${code}`)
+                  .then(res => res.blob())
+                  .then(
+                    blob => {
+                      let imgUrl = URL.createObjectURL(blob);
+                      let imgElement = document.getElementById("product-img");
+                      imgElement.setAttribute("style", "");
+                      imgElement.setAttribute("src", imgUrl)
+                      dataDiv.appendChild(img);
+                    }
+                )
+
+                // get product data
                 fetch(`http://192.168.178.78:8080/product/${code}`)
                 .then(
                     response => response.json()
@@ -58,17 +60,28 @@ function scanner() {
                     data => {
                         console.log("Product data:");
                         console.log(data);
-                        dataDiv = document.getElementById("product-data");
-                        for (const key in jsonToText) {
-                            let par = document.createElement("p")
-                            par.setAttribute("class", "product-infoline");
-                            let text = jsonToText[key] + ": " + data[key];
-                            let textNode = document.createTextNode(text);
-                            par.appendChild(textNode);
-                            dataDiv.appendChild(par);
-                        }
-                    }
 
+                        let productTitleElement = document.getElementById("product-title");
+                        productTitleElement.innerHTML = data['Name'];
+
+                        let productBrandElement = document.getElementById("product-brand");
+                        productBrandElement.innerHTML = data['brand']['Name'];
+
+                        let productSustScoreElement = document.getElementById("product-score");
+                        productSustScoreElement.innerHTML = data['Sustainably_Score'];
+
+                        let productCountryElement = document.getElementById("product-country");
+                        productCountryElement.innerHTML = data['Country_Origin'];
+
+                        let productCarbonFootElement = document.getElementById("product-co2");
+                        productCarbonFootElement.innerHTML = data['CO2_Eqiv'];
+
+                        let productPackageRecyclability = document.getElementById("product-recyclability");
+                        productPackageRecyclability.innerHTML = data['Packaging_Score'];
+
+                        let productDataParent = document.getElementById("product-data");
+                        productDataParent.setAttribute("style", "");
+                    }
                 )
             });
         });
@@ -81,5 +94,5 @@ function scannerApp() {
         console.log("Initializing scanner app...")
         scanner()
     }
-    
+
 }
