@@ -49,6 +49,7 @@ class Chart(Resource):
             xaxis_gridcolor="rgb(153, 153, 153)",
             yaxis_gridcolor="rgb(153, 153, 153)",
             font_color="rgb(153, 153, 153)",
+            margin=dict(l=0, b=0, r=0, t=0),
         )
 
         return carbon_footprint_over_time_line_plot
@@ -73,6 +74,7 @@ class Chart(Resource):
                 template="plotly_dark",
                 plot_bgcolor="rgb(51, 51, 51)",
                 paper_bgcolor="rgb(51, 51, 51)",
+                margin=dict(l=0, b=0, r=0, t=0),
             )
         )
 
