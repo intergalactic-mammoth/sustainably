@@ -1,9 +1,13 @@
 import pandas as pd
 import datetime
 
-PRODUCT_SOURCE = 'data/products.csv'
-BRAND_SOURCE = 'data/products.csv'
-USER_SOURCE = 'data/user/{}.csv'
+import os
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, 'relative/path/to/file/you/want')
+
+PRODUCT_SOURCE = os.path.join(dirname, "../../data/products.csv")
+BRAND_SOURCE = os.path.join(dirname, "../../data/products.csv")
+USER_SOURCE = os.path.join(dirname, "../../data/user/{:03d}.csv")
 
 DATA_TIME_FMT = "%Y-%m-%d %H:%M:%S.%f"
 

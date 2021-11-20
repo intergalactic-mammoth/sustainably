@@ -74,7 +74,7 @@ class Chart(Resource):
         object that can then be embedded into a webpage.
         """
         figure_div = figure.to_html(
-            include_plotlyjs=False,
+            include_plotlyjs=True,
             config={
                 "displayModeBar": False,
             }
