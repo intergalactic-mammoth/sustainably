@@ -10,7 +10,7 @@ from flask import Response
 from flask_restful import Resource
 from plotly import offline
 
-from apis.utils.ChartUtils import co2_footprint
+from apis.utils.ChartUtils import co2_footprint, product_sustainability_breakdown
 
 
 class Chart(Resource):
@@ -51,15 +51,16 @@ class Chart(Resource):
         """
         Create a pie plot with all items flagged as good, okay or bad
         """
-        dummy_data = pd.DataFrame({
-            "names": ["Good", "Okay", "Bad"],
-            "values": [4, 7, 10]
-        })
+        DAYS_BACK = 5
+        data = product_sustainability_breakdown(
+            user_id=user_id,
+            tail_days=DAYS_BACK,
+        )
 
         item_sustainability_pie_chart = go.Figure(
             data=go.Pie(
-                labels=dummy_data["names"],
-                values=dummy_data["values"],
+                labels=data.index,
+                values=data,
                 showlegend=False,
             ),
             layout=go.Layout(
@@ -74,7 +75,7 @@ class Chart(Resource):
                 colors=["green", "blue", "red"],
                 line_width=3,
             ),
-            textfont_size=30,
+            textfont_size=10,
         )
 
         return item_sustainability_pie_chart
