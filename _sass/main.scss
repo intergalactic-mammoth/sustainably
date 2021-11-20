@@ -5,7 +5,6 @@
 .content-wrapper{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     justify-items: center;
     align-content: center;
     width:calc(100vw - 8rem); //leave space for sidebar
@@ -16,10 +15,8 @@
 	margin-right: 1rem;
 
     margin-bottom: 1.5rem;
-}
 
-@media only screen and (max-width: 700px){
-    .content-wrapper{
+    @media only screen and (max-width: 700px){
         width: 100vw;
     }
 }
