@@ -3,6 +3,10 @@
 /* Positioning, layouts, centering etc */
 
 .content-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
     align-content: center;
     width:calc(100vw - 8rem); //leave space for sidebar
     height:100vh;
@@ -12,6 +16,12 @@
 	margin-right: 1rem;
 
     margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 700px){
+    .content-wrapper{
+        width: 100vw;
+    }
 }
 
 // Use this class whenever you want to have a single something inside centered
