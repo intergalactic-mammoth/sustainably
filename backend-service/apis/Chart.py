@@ -2,6 +2,7 @@
 Providing charts based on user statistics.
 """
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -18,19 +19,30 @@ class Chart(Resource):
         """
         Create a timeseries line plot of the carbon footprint per day
         """
+        DAYS_BACK = 5
+        co2_data = co2_footprint(user_id=user_id, tail_days=DAYS_BACK)
+        g = [x.values for x in co2_data]
+        g = np.array(g).flatten()
         # Need function to create data, this is just some dummy data
-        df = px.data.stocks()
-        carbon_footprint_over_time_line_plot: go.Figure = px.line(
-            data_frame=df,
-            x="date",
-            y="GOOG",
-            template="plotly_dark",
+        # carbon_footprint_over_time_line_plot: go.Figure = px.scatter(
+        #     x=list(range(DAYS_BACK)),
+        #     y=g,
+        #     template="plotly_dark",
+        # )
+        carbon_footprint_over_time_line_plot = go.Figure(
+            go.Scatter(
+                x=np.arange(5) - 4 ,
+                y=g,
+                line_shape="spline",
+            )
         )
 
         carbon_footprint_over_time_line_plot.update_layout(
-            xaxis_title="",
+            xaxis_title="Days Back",
             yaxis_title="Carbon Footprint",
             modebar=None,
+            template="plotly_dark",
+            xaxis_dtick=1,
         )
 
         return carbon_footprint_over_time_line_plot
@@ -126,7 +138,10 @@ class Chart(Resource):
             raise ValueError("Requested Chart is not available")
 
 
-if __name__ == "__main__":
+def test():
     chart_resource = Chart()
     chart_resource._carbon_footprint_over_time(1).show(config={"displayModeBar": False})
     chart_resource._item_sustainability(1).show(config={"displayModeBar": False})
+
+if __name__ == "__main__":
+    test()
