@@ -1,6 +1,7 @@
 from flask_restful import Resource
 import csv
 
+
 class Product(Resource):
 
     PRODUCT_SOURCE = 'data/products.csv'
@@ -34,6 +35,7 @@ class Product(Resource):
                 for record in reader:
                     if record['Id'] == product_id:
                         record['brand'] = self.get_brand_data(record['Brand_Id'])
+                        self.products_cache[product_id] = record
                         return record
             return {}
         else:
