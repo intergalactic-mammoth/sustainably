@@ -15,7 +15,25 @@
     
 }
 
+.stat{
+    display: flex;
+    flex-direction: row;
+
+    // Stick last element 
+    p:last-child{
+        margin-left: auto;
+    }
+}
+
+.stat > * {
+    margin-right: 1rem;
+}
+
 .avatar-img{
     border-radius: 50%;
-    max-width: 20%;
+    max-width: 200px;
+}
+
+svg{
+    width: 2rem;
 }

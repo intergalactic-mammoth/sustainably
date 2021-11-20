@@ -1,29 +1,14 @@
 
-// import {initializeApp} from 'firebase/app';
-
-// const firebaseConfig = {
-//     apiKey: "API_KEY",
-//     authDomain: "PROJECT_ID.firebaseapp.com",
-//     databaseURL: "https://PROJECT_ID.firebaseio.com",
-//     projectId: "PROJECT_ID",
-//     storageBucket: "PROJECT_ID.appspot.com",
-//     messagingSenderId: "SENDER_ID",
-//     appId: "APP_ID",
-//     measurementId: "G-MEASUREMENT_ID",
-// };
-
-// const app = initializeApp(firebaseConfig);
-
 let jsonToText = {
-    "Name" : "Name",
-    "Packaging_Type" : "Packaging",
-    "Country_Origin" : "Origin Country",
+    "Name": "Name",
+    "Packaging_Type": "Packaging",
+    "Country_Origin": "Origin Country",
     "Critical Ingredients": "Harmful",
-    "Certifications" : "Certifications",
-    "Notes" : "Additional info",
+    "Certifications": "Certifications",
+    "Notes": "Additional info",
 }
 
-function injectData(){
+function injectData() {
     console.log("Injecting product data to div")
     dataDiv = document.getElementById("product-data");
     dataDiv.append(productData);
@@ -34,11 +19,11 @@ function scanner() {
         engineLocation: "https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/",
         preloadEngineLibrary: boolean = false,
         preloadCameras: boolean = false
-    }).then(()=>{
+    }).then(() => {
         ScanditSDK.BarcodePicker.create(document.getElementById("scandit-barcode-picker"), {
             playSoundOnScan: false,
             vibrateOnScan: true,
-            scanSettings: new ScanditSDK.ScanSettings({ 
+            scanSettings: new ScanditSDK.ScanSettings({
                 enabledSymbologies: ["ean8", "ean13", "upca", "upce"],
                 codeDuplicateFilter: 2000,
             }),
@@ -46,42 +31,55 @@ function scanner() {
             barcodePicker.on("scan", (scanResult) => {
                 console.log(scanResult);
                 console.log(scanResult.barcodes[0].data);
-    
+
                 code = scanResult.barcodes[0].data;
                 console.log("Sending barcode data to server");
                 fetch(`http://192.168.178.78:8080/scan/001/${code}`);
 
                 console.log("Fetching product data from server");
-                fetch(`http://192.168.178.78:8080/product/${code}`).then(
+                // fetch(`http://192.168.178.78:8080//image/product/${code}`).then(
+                //     response => response.json()
+                // ).then(
+                //     data => {
+                //         console.log("Product image:");
+                //         console.log(data);
+                //         dataDiv = document.getElementById("product-data");
+                //         let img = document.createElement("product-data");
+                //         img.setAttribute("class", "product-img");
+                //         img.setAttribute("src", data)
+                //         dataDiv.appendChild(img);
+                //     }
+                // )
+                // .then()
+                fetch(`http://192.168.178.78:8080/product/${code}`)
+                .then(
                     response => response.json()
                 ).then(
                     data => {
+                        console.log("Product data:");
                         console.log(data);
                         dataDiv = document.getElementById("product-data");
                         for (const key in jsonToText) {
                             let par = document.createElement("p")
                             par.setAttribute("class", "product-infoline");
-                            let text = jsonToText[key] + ": " + data[key]; 
+                            let text = jsonToText[key] + ": " + data[key];
                             let textNode = document.createTextNode(text);
                             par.appendChild(textNode);
                             dataDiv.appendChild(par);
                         }
                     }
-                
+
                 )
             });
         });
     })
 }
 
-function scannerApp(){
-    
-    if (window.location.href.split('/').pop().split('.')[0] == "scanner") {
+function scannerApp() {
 
+    if (window.location.href.split('/').pop().split('.')[0] == "scanner") {
         console.log("Initializing scanner app...")
-        // let scanditScript = document.createElement('script');  
-        // scanditScript.setAttribute('src','https://cdn.jsdelivr.net/npm/scandit-sdk@5.x');
-        // document.head.appendChild(scanditScript);
         scanner()
     }
+    
 }
