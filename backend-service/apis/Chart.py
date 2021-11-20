@@ -2,13 +2,15 @@
 Providing charts based on user statistics.
 """
 
-from flask_restful import Resource
 import pandas as pd
-
 import plotly.express as px
-from plotly import offline
 import plotly.graph_objects as go
-import numpy as np
+from flask import Response
+from flask_restful import Resource
+from plotly import offline
+
+from apis.utils.ChartUtils import co2_footprint
+
 
 class Chart(Resource):
 
@@ -71,10 +73,8 @@ class Chart(Resource):
         Takes a plotly figure object and turns it into a str with an html div
         object that can then be embedded into a webpage.
         """
-        figure_div = offline.plot(
-            figure_or_data=figure,
+        figure_div = figure.to_html(
             include_plotlyjs=False,
-            output_type="div",
             config={
                 "displayModeBar": False,
             }
@@ -111,7 +111,7 @@ class Chart(Resource):
                 )
             )
 
-            return time_series_chart_div
+            return Response(time_series_chart_div, mimetype="text/html")
 
         elif chart_type == "item_sustainability":
             pie_chart_div = self._convert_to_div(
@@ -120,7 +120,7 @@ class Chart(Resource):
                 )
             )
 
-            return pie_chart_div
+            return Response(pie_chart_div, mimetype="text/html")
         
         else:
             raise ValueError("Requested Chart is not available")
