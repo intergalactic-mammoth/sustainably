@@ -13,6 +13,9 @@ import numpy as np
 class Chart(Resource):
 
     def _carbon_footprint_over_time(self, user_id):
+        """
+        Create a timeseries line plot of the carbon footprint per day
+        """
         # Need function to create data, this is just some dummy data
         df = px.data.stocks()
         carbon_footprint_over_time_line_plot: go.Figure = px.line(
