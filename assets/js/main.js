@@ -3,7 +3,7 @@ let server_port = "8080"
 // let server_host = "192.168.178.106"
 // let server_port = "5000"
 
-let endpoint = server_host + ":" + server_port
+let endpoint = "sustainably-scanner.ml"
 
 let jsonToText = {
     "Name": "Name",
