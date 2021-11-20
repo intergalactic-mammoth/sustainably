@@ -4,6 +4,8 @@
 
 .content-wrapper{
     align-content: center;
+    width:calc(100vw - 8rem); //leave space for sidebar
+    height:100vh;
 
     margin-top: 2rem;
 	margin-left: 6rem;

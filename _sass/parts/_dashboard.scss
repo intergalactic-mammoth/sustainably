@@ -1,8 +1,8 @@
 .dashboard {
-    margin: 2rem;
+    margin: 4rem;
 
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    grid-auto-rows: 240px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: 300px;
 }
 
 .card{
@@ -13,4 +13,9 @@
 
     transition: all var(--transition-normal);
     
+}
+
+.avatar-img{
+    border-radius: 50%;
+    max-width: 20%;
 }

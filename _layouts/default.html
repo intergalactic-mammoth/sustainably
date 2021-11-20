@@ -1,18 +1,33 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    {% feed_meta %}
-    {% seo %}
+---
+---
 
-    <script defer src="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x"></script>
-  </head>
-  <body>
-    {% include sidebar.html %}
-    <main>
-      <section class="content-wrapper">{{ content }}</section>
-    </main>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+  {% feed_meta %}
+  {% seo %}
+  <script src="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x"></script>
+
+  <script defer src="assets/js/main.js"></script>
+</head>
+
+<body onload="scannerApp()">
+  {% include sidebar.html %}
+  <main class>
+    <section class="content-wrapper">{{ content }}</section>
+  </main>
+</body>
+
 </html>

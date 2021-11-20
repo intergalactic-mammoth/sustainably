@@ -2,19 +2,7 @@
 layout: default
 ---
 
-<div>
-    <scandit-barcode-picker id="barcodePicker"
-        configure.licenseKey="AfSQ2mdTRgepAolsjwu0JM8dn5ONHT255B/e169bGMSgeJjCe2N4GelXOzgfVZJNwRPMya9ogf4AQS/CTVtZiXl3+WpPVibyLUFYmZNKmo5cJGTUX1v0naNNKCoEH7xvgk1BRD4uC4ToCFhORCTEr4UVxJpGMLN0f51u/SANQaIRoM0G67PWYNSAAKjBLqN+9SerGPOziRuepui7BltH7egFVO9phP/gTV9Cw8b4tghWy2cbFoJRtlI/i1cd+QjHM5n/swNambSN8w9UKwPOvxkpwSNBFZ1r9z3mqRFkZ/jkYbTc5FONyd73oRjzF1jvvGip5D1HbB1pdD58roZ8SgPVbxSCSCnoOxVtn76Rui2oZ8WGNgfFacqjcZvBtxmtsZQb9+cnBtNMvljrxp5E+5qFxFQ61811fudRKkTqg8brbKsmZGatKyNn+Ro0s0QxgohzYvMhfYCOxl8fgcYJ1uCug0g7wqX4zhz1WcAbs2y9DIrF/mIk40TQBWxyO/Wl/ljGjgJ3htuQNicfFDm1XzVKLJabIy519Jo60+fMfU7wApNvs7X5uHU01bCuyi8Mg1kT1obAuSScHUYn9obTsnANCP6jrBCIKoDoSB+p2DefqlRKEc9PD+JkajGAaghxJNrrvZlXrN50y9vuOsJEm+iCv5Ma9xiZPsmMmIREnjYBJ+WulR/dGy5eI2TvOhDuPyhnd4gdW987RdCnoysPs2OcHfoApY2eiETCC4iUn5Lib7/+NBpWLs4rG0fVs8inWnUooQTb1yJx+EXBhkefuulH4UMiirMzZ1rU5bOeDGAMkbI+GFw3q4SXOGdQ5ZFkpQutyBBg"
-        configure.engineLocation="https://cdn.jsdelivr.net/npm/scandit-sdk@5.x/build/" playSoundOnScan="true"
-        scanSettings.enabledSymbologies='["ean8", "ean13", "upca", "upce"]'></scandit-barcode-picker>
-    <script>
-        barcodePicker = document.getElementById("barcodePicker");
-        barcodePicker.on("scan", (scanResult) => {
-            alert(
-                scanResult.texts.reduce((string, text) => {
-                    return `${string}${text.value}\n\n`;
-                }, "")
-            );
-        });
-    </script>
+<div class="centered-grid-container flex-column">
+    <div id="scandit-barcode-picker" style="width: 20rem; height: 20rem; border-radius: 15px;"></div>
+    <div id="product-data"></div>
 </div>
