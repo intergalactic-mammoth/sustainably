@@ -1,9 +1,9 @@
-let server_host = "34.159.28.136"
+let server_host = "www.sustainably-scanner.ml"
 let server_port = "8080"
 // let server_host = "192.168.178.106"
 // let server_port = "5000"
 
-let endpoint = "sustainably-scanner.ml"
+let endpoint = server_host + server_port
 let api_key = "AX2gjgRTJWjbGGvClhJtWGY1ZvliBkLaEHNa671S6h7KblIqpl+FbpFy89TqRCzNAU6dBh9Qj2T4bCD6QVrBOT9ikDhQLmJGs3xohUNmLrD5IaRaIE7uerpngUHNKbz6PH3lJhhIBSjhdSzYemA0lidCHDOzbdKj0hGrNw85f2BKD/rxgBqgxC8nYOnA+ZsZ4VQYFa3m5j8D/c3Fn7D6iObZzlCJrd78yAxlWLycP5c7tR+0TFiBKHIpwS+UFtirecMh8vOvF/vz1Nkn2alaxpXKQ8vYkqsj8693k4CeezSNDyTBEc6UCsl6XqkFaBX7Egm0Exo/YSphdVx8ma6HlsJmL9v3GzLfBIzI752sCLuf4Rsk9vqtzvjsB1YYExNFXb7E/pv6mRaxsWmnsobjmLg19Aouf2KeY381ty+SLHbmSHJHUafRPuDFTlL0VEGcVke8/VJTI0RgEsn1TfZO4QbuhMOX7/blRKfALtGEg2ZlPOcL/w6Bkzi0zqTix3uXY4L8Tmlho3S3GdHcq1h1DypVsA3Du9rnR26hpgu0gahEqYz4fuklPTcFetY5mNV4YOjE1qFHX4YGpul8NkaGjDpyxYeiy4wM0/Gv++YoQfZHX8t9t2elfq5CRQfkp22LRtvPcPZ3bY+zHz/++LyiF25z83dZmYVT70yiXLDhPytXxk93IqWiAbR0LZuZhJbMPUJUThhdkpdTVmPUk+USdbU3w6PG5/G0TC/i+6w5CZ6X5TRAq7XUetxjLb5SlWNW9BRJj77YmOJqO1c1qw+0uuuds1nCZ+moWtEA8NTnPwW968Itf2IMa5MAezQ0JyfUPXMboerWPXBOn5KvwHwo/kJxBdw52evZCQ=="
 
 let jsonToText = {
@@ -59,7 +59,7 @@ function scanner() {
                 )
 
                 // get product data
-                fetch(`http://192.168.178.78:8080/product/${code}`)
+                fetch(`http://${endpoint}/product/${code}`)
                 .then(
                     response => response.json()
                 ).then(
