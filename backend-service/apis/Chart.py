@@ -18,4 +18,10 @@ class Chart(Resource):
 
 		fig = px.line(x=x, y=y)
 
-		return fig.to_html(include_plotlyjs="cdn")
+		fig_div = offline.plot(
+			figure_or_data=fig,
+			include_plotlyjs=False,
+			output_type="div"
+		)
+
+		return fig_div
