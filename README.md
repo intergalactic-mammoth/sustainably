@@ -1,32 +1,36 @@
-<p align="center">
-<img src="./readme_media/logo.png" alt="sustainably logo" width="200px" />
-</p>
 
 # sustainably
 
-**sustainably** is a web-app built on modern technologies that aims to make sustainable and environmentally conscious living easy. Everyone wants to do and be good. Being good feels good. But sometimes it just takes so much time. **sustainably** leverages computer-vision machine learning for giving you concise information related to a product's carboon footprint, recyclability, country of origin, and other useful information such as heavily impactful activities related to the product.
+Everyone wants to do and be good. Being good feels good. But, sometimes it just takes so much time.
 
-<p align="center">
-<img src="./readme_media/dashboard.gif" alt="dashboard" width="250" /> <img src="./readme_media/ikea-scan.png" alt="product scan" width="250" />    
-</p>
+Time for some change!
 
-## Running 
+**sustainably** is a web-app built to empower individuals to achieve their sustainability goals by leveraging state of the art technologies and a simple, intuitive UI/UX. Acknowledging the role individuals in our strive for a cleaner future, our aim is to reduce the gap between consumers and their accessibility to information regarding the life cycle of the prodcuts they purchase. Access to objective information in the palm of their hands, a simple barcode scan way reduces the effort required from individuals and allows them to make informed consumption choice.
 
-Front-end
+**sustainably** leverages computer-vision techniques to identify products and provides concise information related to a product's carboon footprint, recyclability, country of origin, etc. Users can choose to track their own consumption footprint throught the application and in future iterations, get recommendations for their purchasing decisions.
 
+## Local Build/Run Instructions 
+
+### Front-end
+#### Requirements
+ - jekyll: https://jekyllrb.com/docs/installation/
+#### Build and Run Locally
 ```shell
 # install dependencies
 bundle install
 
 # run client
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve
 ```
-
 Back-end
+#### Requirements
+ - python 3: https://www.python.org/downloads/
+ - gunicor: https://docs.gunicorn.org/en/stable/install.html
+#### Build and Run
 ```
 #install requirements
-pip install -r backend-service/requirements.txt
+pip3 install -r backend-service/requirements.txt
 
 # run
-gunicorn
+sudo gunicorn -w 4 -b localhost:8080 app:app &
 ```
